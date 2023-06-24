@@ -6,7 +6,7 @@ from src.stock_options.BinomialCRROption import BinomialCRROption
 
 def main():
     constant_values = {"S0": 50, "K": 50, "r": 0.05, "T": 0.5,
-                       "params": {"sigma": 0.3, "is_call": True, "is_eu": True}}
+                       "sigma": 0.3, "is_call": True, "is_eu": True}
     option_price_results = {}
     for i in range(2, 100):
         option_price_results[i] = BinomialCRROption(
