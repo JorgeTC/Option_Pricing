@@ -1,6 +1,8 @@
-#Price an option by the trinomial lattice """
-from TrinomialTreeOption import TrinomialTreeOption
+# Price an option by the trinomial lattice """
 import numpy as np
+
+from src.TrinomialTreeOption import TrinomialTreeOption
+
 
 class TrinomialLattice(TrinomialTreeOption):
     def _setup_parameters_(self):
@@ -14,10 +16,11 @@ class TrinomialLattice(TrinomialTreeOption):
             self.STs[i] = self.STs[i-1]*self.d
 
     def _initialize_payoffs_tree_(self):
-        return np.maximum(0, (self.STs - self.K) if self.is_call else(self.K - self.STs))
- 
+        return np.maximum(0, (self.STs - self.K) if self.is_call else (self.K - self.STs))
+
     def __check_early_exercise__(self, payoffs, node):
-        self.STs = self.STs[1:-1] # Shorten the ends of the list
-        early_ex_payoffs = (self.STs - self.K) if self.is_call else (self.K - self.STs)
+        self.STs = self.STs[1:-1]  # Shorten the ends of the list
+        early_ex_payoffs = (
+            self.STs - self.K) if self.is_call else (self.K - self.STs)
         payoffs = np.maximum(payoffs, early_ex_payoffs)
         return payoffs
