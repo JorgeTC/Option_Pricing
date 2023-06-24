@@ -1,14 +1,14 @@
 import __init__
-from src.BinomialCRRLattice import BinomialCRRLattice
-from src.BinomialCRROption import BinomialCRROption
-from src.BinomialEuropeanOption import BinomialEuropeanOption
-from src.BinomialLROption import BinomialLROption
-from src.BinomialLRWithGreeks import BinomialLRWithGreeks
-from src.BinomialTreeOption import BinomialTreeOption
-from src.FDExplicitEu import FDExplicitEu
-from src.FDImplicitEu import FDImplicitEu
-from src.TrinomialLattice import TrinomialLattice
-from src.TrinomialTreeOption import TrinomialTreeOption
+from src.finite_differences.FDExplicitEu import FDExplicitEu
+from src.finite_differences.FDImplicitEu import FDImplicitEu
+from src.stock_options.BinomialCRRLattice import BinomialCRRLattice
+from src.stock_options.BinomialCRROption import BinomialCRROption
+from src.stock_options.BinomialEuropeanOption import BinomialEuropeanOption
+from src.stock_options.BinomialLROption import BinomialLROption
+from src.stock_options.BinomialLRWithGreeks import BinomialLRWithGreeks
+from src.stock_options.BinomialTreeOption import BinomialTreeOption
+from src.stock_options.TrinomialLattice import TrinomialLattice
+from src.stock_options.TrinomialTreeOption import TrinomialTreeOption
 
 
 def main():

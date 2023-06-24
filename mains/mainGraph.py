@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 import __init__
-from src.BinomialCRROption import BinomialCRROption
+from src.stock_options.BinomialCRROption import BinomialCRROption
 
 
 def main():

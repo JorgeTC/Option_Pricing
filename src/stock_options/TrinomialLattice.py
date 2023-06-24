@@ -1,7 +1,7 @@
 # Price an option by the trinomial lattice """
 import numpy as np
 
-from src.TrinomialTreeOption import TrinomialTreeOption
+from .TrinomialTreeOption import TrinomialTreeOption
 
 
 class TrinomialLattice(TrinomialTreeOption):

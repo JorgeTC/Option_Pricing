@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 
-from src.BinomialTreeOption import BinomialTreeOption
+from .BinomialTreeOption import BinomialTreeOption
 
 
 class TrinomialTreeOption(BinomialTreeOption):

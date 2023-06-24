@@ -1,7 +1,7 @@
 """ Explicit method of Finite Differences """
 import numpy as np
 
-from src.FiniteDifferences import FiniteDifferences
+from .FiniteDifferences import FiniteDifferences
 
 
 class FDExplicitEu(FiniteDifferences):

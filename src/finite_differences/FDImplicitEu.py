@@ -2,7 +2,7 @@
 import numpy as np
 import scipy.linalg as linalg
 
-from src.FDExplicitEu import FDExplicitEu
+from .FDExplicitEu import FDExplicitEu
 
 
 class FDImplicitEu(FDExplicitEu):

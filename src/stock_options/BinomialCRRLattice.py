@@ -1,7 +1,7 @@
 # Price an option by the binomial CRR lattice """
 import numpy as np
 
-from src.BinomialCRROption import BinomialCRROption
+from .BinomialCRROption import BinomialCRROption
 
 
 class BinomialCRRLattice(BinomialCRROption):

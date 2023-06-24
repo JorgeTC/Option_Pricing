@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 
-from src.BinomialLROption import BinomialLROption
+from .BinomialLROption import BinomialLROption
 
 
 class BinomialLRWithGreeks(BinomialLROption):

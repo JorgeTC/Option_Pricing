@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 
-from src.StockOption import StockOption
+from .StockOption import StockOption
 
 
 class BinomialEuropeanOption(StockOption):
