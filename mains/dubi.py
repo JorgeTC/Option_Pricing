@@ -92,7 +92,7 @@ def main():
         "Enter a parameter of the list:", valid_list)
     constant_parameters = check_parameter(param_to_graph)
     constant_values = {**constant_parameters,
-                       "params": {"sigma": 0.3, "is_call": True, "is_eu": True}}
+                       "sigma": 0.3, "is_call": True, "is_eu": True}
     print(constant_values)
 
     option_price_results = {}
