@@ -2,7 +2,7 @@
 
 import math
 
-from BinomialTreeOption import BinomialTreeOption
+from src.BinomialTreeOption import BinomialTreeOption
 
 
 class BinomialLROption(BinomialTreeOption):
