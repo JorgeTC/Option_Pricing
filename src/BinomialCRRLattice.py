@@ -1,6 +1,8 @@
-#Price an option by the binomial CRR lattice """
-from BinomialCRROption import BinomialCRROption
+# Price an option by the binomial CRR lattice """
 import numpy as np
+
+from BinomialCRROption import BinomialCRROption
+
 
 class BinomialCRRLattice(BinomialCRROption):
     def _setup_parameters_(self):
@@ -15,11 +17,12 @@ class BinomialCRRLattice(BinomialCRROption):
 
     def _initialize_payoffs_tree_(self):
         odd_nodes = self.STs[::2]
-        return np.maximum(0, (odd_nodes - self.K) if self.is_call else(self.K - odd_nodes))
- 
+        return np.maximum(0, (odd_nodes - self.K) if self.is_call else (self.K - odd_nodes))
+
     def __check_early_exercise__(self, payoffs, node):
-        self.STs = self.STs[1:-1] # Shorten the ends of the list
+        self.STs = self.STs[1:-1]  # Shorten the ends of the list
         odd_STs = self.STs[::2]
-        early_ex_payoffs = (odd_STs - self.K) if self.is_call else (self.K - odd_STs)
+        early_ex_payoffs = (
+            odd_STs - self.K) if self.is_call else (self.K - odd_STs)
         payoffs = np.maximum(payoffs, early_ex_payoffs)
         return payoffs

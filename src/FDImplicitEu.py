@@ -1,7 +1,9 @@
 """ Implicit method of Finite Differences """
 import numpy as np
 import scipy.linalg as linalg
-from FDExplicitEu import FDExplicitEu
+
+from src.FDExplicitEu import FDExplicitEu
+
 
 class FDImplicitEu(FDExplicitEu):
     def _setup_coefficients_(self):
@@ -11,7 +13,7 @@ class FDImplicitEu(FDExplicitEu):
         self.coeffs = np.diag(self.a[2:self.M], -1) + np.diag(self.b[1:self.M]) + np.diag(self.c[1:self.M-1], 1)
 
     def _traverse_grid_(self):
- 
+
         P, L, U = linalg.lu(self.coeffs)
         aux = np.zeros(self.M-1)
         for j in reversed(range(self.N)):
