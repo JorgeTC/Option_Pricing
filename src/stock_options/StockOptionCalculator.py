@@ -1,11 +1,33 @@
+from dataclasses import dataclass, fields
 import matplotlib.pyplot as plt
-
-import __init__
+from typing import Type
+from src.stock_options.BinomialCRRLattice import BinomialCRRLattice
 from src.stock_options.BinomialCRROption import BinomialCRROption
-from src.stock_options.StockOptionCalculator import StockOptionCalculator
+from src.stock_options.BinomialEuropeanOption import BinomialEuropeanOption
+from src.stock_options.BinomialLROption import BinomialLROption
+from src.stock_options.BinomialLRWithGreeks import BinomialLRWithGreeks
+from src.stock_options.BinomialTreeOption import BinomialTreeOption
+from src.stock_options.TrinomialLattice import TrinomialLattice
+from src.stock_options.TrinomialTreeOption import TrinomialTreeOption
+from src.stock_options.StockOption import StockOption
 
 
-def request_parameter_to_graph(message, valid_values: list[str]):
+@dataclass
+class OptionParams:
+    S0: float
+    K: float
+    r: float
+    T: float
+    N: int
+    pu: float = 0
+    pd: float = 0,
+    div: float = 0
+    sigma: float = 0
+    is_call: bool = True
+    is_eu: bool = True
+
+
+def request_element_in_list(message, valid_values: list[str]):
     while True:
         value = input(message)
         if value in valid_values:
@@ -80,9 +102,29 @@ def plot_series(series: dict, x_label: str, y_label: str, title: str):
     plt.show()
 
 
-def main():
-    StockOptionCalculator.plot_value()
+class StockOptionCalculator:
 
+    available_options: list[Type[StockOption]] = [BinomialCRRLattice, BinomialCRROption, BinomialEuropeanOption,
+                                            BinomialLROption, BinomialLRWithGreeks, BinomialTreeOption,
+                                            TrinomialLattice, TrinomialTreeOption]
+    dict_options = {option.__name__: option for option in available_options}
 
-if __name__ == '__main__':
-    main()
+    parameters = [parm.name for parm in fields(OptionParams)]
+
+    @classmethod
+    def plot_value(cls):
+        param_to_graph = request_element_in_list(
+            "Enter a parameter of the list: ", cls.parameters)
+        option_name = request_element_in_list(
+            "Enter the option: ", cls.dict_options.keys())
+        option = cls.dict_options[option_name]
+        constant_values = check_parameter(param_to_graph)
+        print(constant_values)
+
+        option_price_results = {}
+        for i in range(2, 100):
+            all_values = {**constant_values, **{param_to_graph: i}}
+            option_price_results[i] = option(**all_values).price()
+
+        plot_series(option_price_results, 'Steps', 'Option price',
+                    f"Option price deppending on {param_to_graph}")
